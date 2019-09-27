@@ -1,6 +1,6 @@
 # Simple SVG Editor
 
-A Simple SVG Editor uses the SVG.js (svgjs.com)
+A Simple SVG Editor uses the [SVG.js](https://svgjs.com)
 
 ## Getting Started
 
@@ -15,4 +15,4 @@ Published under an MIT License.
 
 ## Acknowledgments
 
-Reference to [SVG.js] (https://svgjs.com), [SVG-edit] (https://code.google.com/archive/p/svg-edit)
+Reference to [SVG.js](https://svgjs.com), [SVG-edit](https://code.google.com/archive/p/svg-edit)
