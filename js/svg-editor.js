@@ -1,10 +1,10 @@
+var drawObj = null;
 var drawing = SVG('drawing').size(624, 513)
-var rect = drawing.rect();
 
 drawing.on('mousedown', event=> {
-  console.log("mousedown");
-  rect = drawing.rect();
-  rect.draw('point', event);
+  if(drawObj != null) {
+    drawObj.draw('point', event);
+  }
 });
 
 drawing.on('mousemove', event=> {
@@ -12,9 +12,12 @@ drawing.on('mousemove', event=> {
 });
 
 drawing.on('mouseup', event=> {
-
-  rect.draw('stop', event);
+  if(drawObj != null) {
+    drawObj.draw('stop', event);
+  }
 });
+
+
 
 // Dynamic tools setup. It is to implement the flextibility to add/remove tool
 // buttons on the tools panel. It can be put into database instead of hardcoding
@@ -47,12 +50,45 @@ function dynamicTools() {
   }
 };
 
+function createDrawObject(obj)  {
+  const option = {
+    stroke: 'blue',
+    'stroke-width': 2,
+    'fill-opacity': 0,
+  };
+  const style = {
+    'cursor': 'pointer',
+  };
+
+  let drawObj = null;
+  switch (obj) {
+    case 'rect':
+      drawObj = drawing.rect();
+      break;
+    case 'ellipse':
+      drawObj = drawing.ellipse();
+      break;
+    default:
+      drawObj = null;
+  }
+  if (drawObj) {
+    drawObj
+    .attr(option)
+    .style(style)
+  }
+
+  return drawObj;
+};
+
 function toolBtnClick(e) {
   e = e || window.event;
   var target = e.target || e.srcElement;
   $('.tool-button-selected').removeClass('tool-button-selected').addClass('tool-button');
   $('#'+target.id).addClass('tool-button-selected');
+  drawObj = createDrawObject(target.id.split('-')[1]);
 }
+
+
 
 function editor() {
   dynamicTools();
