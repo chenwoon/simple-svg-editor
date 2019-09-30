@@ -1,0 +1,38 @@
+
+#svg-editor .menu-panel {
+  width: 705px;
+	height: 34px;
+	border-bottom: none;
+	background: #E8E8E8;
+	border: 1px solid #808080;
+	padding: 4px;
+	float: left;
+	clear: both;
+}
+
+#svg-editor .tools-panel {
+  border-right: none;
+	height: 504px;
+	width: 80px;
+  background: #E8E8E8;
+	border: 1px solid #808080;
+	padding: 4px;
+	float: left;
+	clear: both;
+}
+
+#svg-editor .tool-button-current {
+  height: 24px;
+	width: 24px;
+	margin: 2px;
+	padding: 2px;
+	border-left: 1px solid #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #808080;
+	border-bottom: 1px solid #808080;
+	cursor: pointer;
+}
+
+#svg-editor div#workarea {
+	float: left;
+}

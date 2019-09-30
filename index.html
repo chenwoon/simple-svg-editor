@@ -1,0 +1,55 @@
+</<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="svg-editor.css" type="text/css"/>
+  <script src="js/svg.js"></script>
+  <script src="js/svg.draw.min.js"></script>
+
+  <title>Simple SVG Editor</title>
+</head>
+<body>
+<div id="svg-editor">
+  <div id="menu" class="menu-panel">
+    <div>
+    	<img class="menu-button" id="menu-new" src="images/new.png" title="New" alt="New" />
+    	<img class="menu-button" id="menu-save" src="images/save.png" title="Save" alt="Save"/>
+  	</div>
+  </div>
+
+  <div id="tools" class="tools-panel">
+    <img class="tool-button-current" id="tool-select" src="images/select.png" title="Select Tool" alt="Select"/> Select<br/>
+  </div>
+
+  <div id="workarea" style="border: 1px solid grey;">
+    <div id="drawing"></div>
+  </div>
+
+</div>
+<script src="js/svg-editor.js"></script>
+<!--
+<script type="text/javascript">
+var drawing = SVG('drawing').size(624, 513)
+var rect = drawing.rect();
+
+drawing.on('mousedown', event=> {
+  console.log("mousedown");
+  //rect = draw.rect();
+  rect = drawing.rect();
+  rect.draw('point', event);
+});
+
+drawing.on('mousemove', event=> {
+
+});
+
+drawing.on('mouseup', event=> {
+
+  rect.draw('stop', event);
+});
+
+</script>
+-->
+</body>
+</html>
