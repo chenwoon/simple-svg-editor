@@ -21,19 +21,7 @@
 	clear: both;
 }
 
-#svg-editor .tool-button-current {
-  height: 24px;
-	width: 24px;
-	margin: 2px;
-	padding: 2px;
-	border-left: 1px solid #FFFFFF;
-	border-top: 1px solid #FFFFFF;
-	border-right: 1px solid #808080;
-	border-bottom: 1px solid #808080;
-	cursor: pointer;
-}
-
-#svg-editor .tool-button {
+#svg-editor .tool-button, #svg-editor .tool-button-selected {
   height: 24px;
   width: 24px;
   margin: 2px;
@@ -43,6 +31,14 @@
   border-right: 1px solid #808080;
   border-bottom: 1px solid #808080;
   cursor: pointer;
+}
+
+#svg-editor .tool-button-selected {
+	border-left: 1px solid #808080;
+	border-top: 1px solid #808080;
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	background-color: #B0B0B0;
 }
 
 #svg-editor div#workarea {
