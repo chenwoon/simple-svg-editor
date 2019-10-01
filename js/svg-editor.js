@@ -95,7 +95,7 @@ function unselectAll() {
     selectedObjs[i].resize('stop');
     selectedObjs[i].selectize(false);
   }
-}
+};
 
 function toolBtnClick(e) {
   e = e || window.event;
@@ -105,7 +105,20 @@ function toolBtnClick(e) {
   drawObj = createDrawObject(target.id.split('-')[1]);
 }
 
-
+function save() {
+  unselectAll();
+  var a = document.createElement('a');
+  a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(drawing.svg()));
+  a.setAttribute('download', 'simple.svg');
+  if (document.createEvent) {
+      var event = document.createEvent('MouseEvents');
+      event.initEvent('click', true, true);
+      a.dispatchEvent(event);
+  }
+  else {
+      a.click();
+  }
+};
 
 function editor() {
   dynamicTools();
