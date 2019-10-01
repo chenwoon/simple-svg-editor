@@ -1,5 +1,6 @@
 var drawObj = null;
-var drawing = SVG('drawing').size(624, 513)
+var drawing = SVG('drawing').size(624, 513);
+var selectedObjs = []; // For future multi-select
 
 drawing.on('mousedown', event=> {
   if(drawObj != null) {
@@ -75,10 +76,26 @@ function createDrawObject(obj)  {
     drawObj
     .attr(option)
     .style(style)
+    .draggable()
+    .click(clickHandler);
   }
 
   return drawObj;
 };
+
+function clickHandler(event) {
+  unselectAll();
+  this.selectize();
+  this.resize();
+  selectedObjs[0] = this;
+};
+
+function unselectAll() {
+  for(var i = 0; i < selectedObjs.length; i++) {
+    selectedObjs[i].resize('stop');
+    selectedObjs[i].selectize(false);
+  }
+}
 
 function toolBtnClick(e) {
   e = e || window.event;
