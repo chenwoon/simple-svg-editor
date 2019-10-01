@@ -137,7 +137,12 @@ function deleteDrawObj() {
     selectedObjs.splice(i,1);
   }
   unselectAll();
-}
+};
+
+function newPage() {
+  unselectAll();
+  drawing.clear();
+};
 
 function editor() {
   dynamicTools();
