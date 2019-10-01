@@ -4,11 +4,11 @@ A Simple SVG Editor uses the [SVG.js](https://svgjs.com)
 
 ## Getting Started
 
-*Initial state. Nothing to describe yet
+This is a simple SVG editor with dynamic tools panel. It has 'Rect', 'Ellipse' and 2x 'Image' selection.
 
 ## License
 
-Copyright(c) 
+Copyright(c)
 Thong Chen Woon chenwoon.thong@gmail.com
 
 Published under an MIT License.
