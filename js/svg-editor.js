@@ -3,6 +3,7 @@ var drawing = SVG('drawing').size(624, 513);
 var selectedObjs = []; // For future multi-select
 
 drawing.on('mousedown', event=> {
+  unselectAll();
   if(drawObj != null) {
     drawObj.draw('point', event);
   }
@@ -15,10 +16,17 @@ drawing.on('mousemove', event=> {
 drawing.on('mouseup', event=> {
   if(drawObj != null) {
     drawObj.draw('stop', event);
+    // Done with this drawObj. Create another
+    drawObj = createDrawObject(drawObj.type);
   }
 });
 
-
+document.addEventListener('keydown', function(event) {
+    const key = event.key; // const {key} = event; ES6+
+    if (key === "Delete") {
+        deleteDrawObj();
+    }
+});
 
 // Dynamic tools setup. It is to implement the flextibility to add/remove tool
 // buttons on the tools panel. It can be put into database instead of hardcoding
@@ -88,6 +96,7 @@ function clickHandler(event) {
   this.selectize();
   this.resize();
   selectedObjs[0] = this;
+  $('#menu-delete').show();
 };
 
 function unselectAll() {
@@ -95,6 +104,7 @@ function unselectAll() {
     selectedObjs[i].resize('stop');
     selectedObjs[i].selectize(false);
   }
+  $('#menu-delete').hide();
 };
 
 function toolBtnClick(e) {
@@ -119,6 +129,15 @@ function save() {
       a.click();
   }
 };
+
+function deleteDrawObj() {
+  for(var i = 0; i < selectedObjs.length; i++) {
+    selectedObjs[i].resize('stop');
+    selectedObjs[i].selectize(false).remove();
+    selectedObjs.splice(i,1);
+  }
+  unselectAll();
+}
 
 function editor() {
   dynamicTools();

@@ -41,6 +41,10 @@
 	background-color: #B0B0B0;
 }
 
+#svg-editor #menu-delete {
+	display: none;
+}
+
 #svg-editor div#workarea {
 	float: left;
 }
