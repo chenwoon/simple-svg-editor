@@ -141,21 +141,34 @@ function toolBtnClick(e) {
   selectedTitle = target.title;
 };
 
-// Because of the way the draw.image was created, it will have hidden images
-// everytime the image tool is clicked. This is to remove those hidden images.
-function removeHiddenImage() {
+// Because of the way the draw.obj was created, it will have hidden objects
+// everytime the [shape] tool is clicked. This is to remove those hidden objects.
+function removeHiddenObjs() {
   var elems = drawing.children();
   for(var i = 0; i < elems.length; i++) {
-    if(elems[i].type == "image") {
-      if(elems[i].node.style.display == 'none') {
-        elems[i].node.parentNode.removeChild(elems[i].node);
-      }
+    switch(elems[i].type) {
+      case "image":
+        if(elems[i].node.style.display == 'none') {
+          elems[i].node.parentNode.removeChild(elems[i].node);
+        }
+        break;
+      case "rect":
+        if(elems[i].node.width.baseVal.value == 0 && elems[i].node.height.baseVal.value == 0) {
+          elems[i].node.parentNode.removeChild(elems[i].node);
+        }
+        break;
+      case "ellipse":
+        if(elems[i].node.rx.baseVal.value == 0 && elems[i].node.ry.baseVal.value == 0) {
+          elems[i].node.parentNode.removeChild(elems[i].node);
+        }
+        break;
     }
+
   }
 };
 
 function save() {
-  removeHiddenImage();
+  removeHiddenObjs();
   unselectAll();
   var a = document.createElement('a');
   a.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(drawing.svg()));
