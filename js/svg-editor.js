@@ -18,7 +18,12 @@ drawing.on('mousemove', event=> {
 
 drawing.on('mouseup', event=> {
   if(drawObj != null) {
-    drawObj.draw('stop', event);
+    try{
+      drawObj.draw('stop', event);
+    }
+    catch(err) {
+      console.log("Caugth error from svg.draw.js");
+    }
     // Done with this drawObj. Create another
     drawObj = createDrawObject(drawObj.type, selectedTitle);
   }
